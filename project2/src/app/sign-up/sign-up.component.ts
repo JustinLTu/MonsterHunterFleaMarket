@@ -20,7 +20,7 @@ export class SignUpComponent implements OnInit {
     if (form != null) {
       form.reset();
       this.user = {
-        account: '',
+        hunter_name: '',
         rank: '',
         email: '',
         password: '',

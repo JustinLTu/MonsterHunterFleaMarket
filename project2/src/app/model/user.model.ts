@@ -3,5 +3,5 @@ export class User {
     password: string;
     email: string;
     rank: string;
-    account: string;
+    hunter_name: string;
 }
