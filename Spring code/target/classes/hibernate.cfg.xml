@@ -10,14 +10,14 @@
        			org.postgresql.Driver
        		</property>
        		<property name="hibernate.connection.url">
-       			jdbc:postgresql://mydb.cd2berwkughw.us-east-2.rds.amazonaws.com:5432/myDB?
+       			
        		</property>
        		<property name="hibernate.connection.username">
-       			tsanjeev
+       			
        			
        		</property>
        		<property name="hibernate.connection.password">
-       			revatureFullStax87
+       			
        			<!--  ${ 1808-ec2-uname } -->
        		</property>
        		
