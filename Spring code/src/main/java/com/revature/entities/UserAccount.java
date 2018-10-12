@@ -37,7 +37,6 @@ public class UserAccount {
 	
 	public UserAccount() {
 		super();
-		email="Test@user";
 		// TODO Auto-generated constructor stub
 	}
 		

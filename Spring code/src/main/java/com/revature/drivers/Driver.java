@@ -9,11 +9,11 @@ import com.revature.util.SessionUtil;
 public class Driver {
 
 	public static void main(String[] args) {
-		
-		/*UserDao dao = new UserDao();
-		dao.read("Hatter", "pass");
-		dao.read("Hatter", "pasass");
-		UserAccount h = new UserAccount("test", "test", 1, "test", "test");
+		/*
+		UserDao dao = new UserDao();
+		//dao.read("Hatter", "pass");
+		//dao.read("Hatter", "pasass");
+		UserAccount h = new UserAccount("test2", "test", 1, "test", "test");
 		dao.create(h);
 		System.out.println(h.getUserid());*/
 //		Session sess = SessionUtil.getSession();

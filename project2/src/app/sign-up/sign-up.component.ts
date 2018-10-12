@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user.model';
-import { NgForm } from '@angular/forms';
+import { RegisterService } from '../service/register.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,22 +10,30 @@ import { NgForm } from '@angular/forms';
 export class SignUpComponent implements OnInit {
 
   user: User;
-  constructor() { }
+  constructor(private rService: RegisterService) { }
 
   ngOnInit() {
-    this.resetForm();
   }
 
-  resetForm(form?: NgForm) {
-    if (form != null) {
-      form.reset();
-      this.user = {
-        hunter_name: '',
-        rank: '',
-        email: '',
-        password: '',
-        username: ''
-        };
-      }
-  }
+  registerUser(event) {
+    event.preventDefault();
+    const target = event.target;
+    const username = target.querySelector('#username').value;
+    const password = target.querySelector('#password').value;
+    const rank = target.querySelector('#rank').value;
+    const hunter_name = target.querySelector('#hunter_name').value;
+    const email = target.querySelector('#email').value;
+
+    this.user = new User();
+    this.user.username = username;
+    this.user.password = password;
+    this.user.hunter_name = hunter_name;
+    this.user.rank = rank;
+    this.user.email = email;
+
+    this.rService.signup(this.user).subscribe(data => {
+        console.log(data);
+    });
+    }
+
 }

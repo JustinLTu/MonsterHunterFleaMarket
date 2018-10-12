@@ -12,8 +12,8 @@ export class LoginService {
 
   getInfo(user: User) {
 
-    return this.http.post(this.url,
-      JSON.stringify(User)
+    return this.http.get(this.url,
+      {responseType: 'text'}
     );
 }
 }

@@ -7,6 +7,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService implements GenericService<UserAccount>{
 	
+	public UserService() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	UserDao dao = new UserDao();
 
 	@Override

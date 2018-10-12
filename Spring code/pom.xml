@@ -13,8 +13,8 @@
            <type>pom</type>
            <scope>import</scope>
        </dependency>
-   </dependencies>
-</dependencyManagement>
+   	</dependencies>
+	</dependencyManagement>
   <build>
 		<plugins>
 			<plugin>
@@ -78,7 +78,7 @@
      <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-        </dependency>
+      </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>

@@ -3,7 +3,6 @@ package com.revature.controllers;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,23 +15,22 @@ import com.revature.entities.UserAccount;
 import com.revature.service.UserService;
 
 @RestController
-@CrossOrigin
 public class UserController {
 	
 	@Autowired
 	UserService service;
 	
-	@RequestMapping(value="/login", method = RequestMethod.GET)
+	@RequestMapping(value="/login", method = RequestMethod.GET, produces= {"text/plain"})
 	public String login(UserAccount attempt) {
 		return "forward:/index.html";
 	}
 	
-	@RequestMapping(value="/accounts",  method = RequestMethod.POST)
-	public void register(UserAccount user) {
+	@RequestMapping(value="/accounts",  method = RequestMethod.POST, consumes= {"application/json"})
+	public void register(@RequestBody UserAccount user) {
 		service.create(user);
 	}
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST, consumes= {"application/json"})
+	@RequestMapping(value="/loginr", method=RequestMethod.POST, consumes= {"application/json"})
 	public String loginPost(@RequestBody UserAccount user, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
 		
 		//UserAccount testA = new UserAccount("test", "test", 1, "testk", "test");
