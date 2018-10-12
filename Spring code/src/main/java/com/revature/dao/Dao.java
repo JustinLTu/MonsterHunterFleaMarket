@@ -2,8 +2,8 @@ package com.revature.dao;
 
 public interface Dao<T> {
 	public T read(int id);
-	public void create(T t);
-	public boolean update(int id, T t);
+	public int create(T t);
+	public T update(int id, T t);
 	public void delete(T t);
 }
 

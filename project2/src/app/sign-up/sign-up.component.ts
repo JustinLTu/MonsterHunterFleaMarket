@@ -13,7 +13,7 @@ export class SignUpComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   // this.resetForm();
+    this.resetForm();
   }
 
   resetForm(form?: NgForm) {

@@ -37,6 +37,7 @@ public class UserAccount {
 	
 	public UserAccount() {
 		super();
+		email="Test@user";
 		// TODO Auto-generated constructor stub
 	}
 		
@@ -84,15 +85,19 @@ public class UserAccount {
 		this.email = email;
 	}
 
-
-
 	public int getUserid() {
 		return userid;
 	}
 
-
-
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
+
+	@Override
+	public String toString() {
+		return "UserAccount [userid=" + userid + ", username=" + username + ", password=" + password + ", rank=" + rank
+				+ ", hunter_name=" + hunter_name + ", email=" + email + "]";
+	}
+	
+	
 }
