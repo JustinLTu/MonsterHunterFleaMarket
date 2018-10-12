@@ -9,17 +9,21 @@ import { LoginComponent } from './login/login.component';
 
 import { LoginService } from './service/login.service';
 import { RegisterService } from './service/register.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [LoginService, RegisterService],
   bootstrap: [AppComponent]

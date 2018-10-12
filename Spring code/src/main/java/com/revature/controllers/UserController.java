@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.entities.UserAccount;
 import com.revature.service.UserService;
 
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class UserController {
 	
