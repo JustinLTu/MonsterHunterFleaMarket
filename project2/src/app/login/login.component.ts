@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError} from 'rxjs';
+
+
 import { LoginService } from '../service/login.service';
 import { User } from '../model/user.model';
+import { Routes } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -15,6 +22,17 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  handleError(err: HttpErrorResponse) {
+    if (err.status === 401) {
+      document.getElementById('login-error').style.display = 'inline';
+      return throwError('throwing error login');
+    }
+  }
+
+  navigate() {
+    this.router.navgateURL(['/home']);
+ }
+
   loginUser(event) {
     event.preventDefault();
     const target = event.target;
@@ -28,8 +46,6 @@ export class LoginComponent implements OnInit {
     this.user.rank = null;
     this.user.email = null;
 
-    this.login.getInfo(this.user).subscribe(data => {
-      console.log(this.user);
-    });
+    this.login.getInfo(this.user).pipe(catchError(this.handleError)).subscribe(data => {console.log(data));
     }
   }

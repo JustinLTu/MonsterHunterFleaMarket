@@ -1,10 +1,13 @@
 package com.revature.controllers;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.jboss.logging.Logger;
+import org.jboss.logging.LoggingClass;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,45 +17,47 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.entities.UserAccount;
 import com.revature.service.UserService;
 
-@CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class UserController {
 	
 	@Autowired
 	UserService service;
 	
-	@RequestMapping(value="/login", method = RequestMethod.GET, produces= {"text/plain"})
-	public String login(UserAccount attempt) {
-		return "forward:/index.html";
+	Logger log = Logger.getLogger(UserController.class);
+	
+	@CrossOrigin
+	@RequestMapping(value="/login", method = RequestMethod.POST, consumes= {"application/json"}, produces= {"text/plain"})
+	public void login(@RequestBody UserAccount attempt,  HttpSession sess, HttpServletResponse resp) {
+		UserAccount authUser = service.validateUser(attempt);
+		
+		if(authUser != null) {
+			sess.setAttribute("user", authUser);
+			log.info("Going Home");
+			try {
+				resp.sendRedirect("home");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				log.warn(e.getMessage() + " From UserController.login() Failed Redirect to Home");
+			}
+			//return "home";
+			//return "{\"name\": \"red\"}";
+		} else {
+			try {
+				resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+			} catch (IOException e) {
+				log.warn(e.getMessage() + " From UserController.login() Unauthorized Login");
+			}
+		}
+		
+		//return "forward:/index.html";
 	}
 	
+	@CrossOrigin
 	@RequestMapping(value="/accounts",  method = RequestMethod.POST, consumes= {"application/json"})
 	public void register(@RequestBody UserAccount user) {
 		service.create(user);
 	}
 	
-	@RequestMapping(value="/loginr", method=RequestMethod.POST, consumes= {"application/json"})
-	public String loginPost(@RequestBody UserAccount user, BindingResult bindingResult, ModelMap modelMap, HttpSession sess) {
-		
-		//UserAccount testA = new UserAccount("test", "test", 1, "testk", "test");
-		UserAccount authUser = service.validateUser(user);
-		
-		if(bindingResult.hasErrors()) {
-			modelMap.addAttribute("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
-			
-			return "login";
-		}
-		
-		//System.out.println(authUser.toString());
-		if(authUser != null) {
-			sess.setAttribute("user", authUser);
-			System.out.println("going home");
-			return "home";
-		}
-		
-		modelMap.addAttribute("errorMessage", "Username or password incorrect");
-		
-		return "forward:/index.html";
-		
-	}
+	
 }
