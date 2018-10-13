@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError} from 'rxjs';
+import { Router } from '@angular/router';
 
 
 import { LoginService } from '../service/login.service';
@@ -17,7 +18,7 @@ import { Routes } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public user: User;
-  constructor(private login: LoginService) { }
+  constructor(private login: LoginService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -29,8 +30,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  navigate() {
-    this.router.navgateURL(['/home']);
+  navigate(user) {
+    this.router.navigateByUrl('home');
+    console.log(user);
  }
 
   loginUser(event) {
@@ -46,6 +48,6 @@ export class LoginComponent implements OnInit {
     this.user.rank = null;
     this.user.email = null;
 
-    this.login.getInfo(this.user).pipe(catchError(this.handleError)).subscribe(data => {console.log(data));
+    this.login.getInfo(this.user).pipe(catchError(this.handleError)).subscribe(data => this.navigate(data));
     }
   }

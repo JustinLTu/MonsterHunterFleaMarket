@@ -14,12 +14,13 @@ export class LoginService {
   private url = 'http://localhost:8080/HunterFleaMarket/login';
   constructor( private http: HttpClient) { }
 
-  getInfo(user: User): Observable<any> {
+  getInfo(user: User): Observable<User> {
     // this.url = this.url + '?username=' + user.username + '&password=' + user.password;
-    const resp = {responseType: 'text' as 'text' };
-    return this.http.post(this.url,
+    // const resp = {responseType: 'text' as 'text' };
+    return this.http.post<User>(this.url,
         user,
-        resp);
+    );
+       // resp);
 }
 }
 

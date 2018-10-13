@@ -26,20 +26,17 @@ public class UserController {
 	Logger log = Logger.getLogger(UserController.class);
 	
 	@CrossOrigin
-	@RequestMapping(value="/login", method = RequestMethod.POST, consumes= {"application/json"}, produces= {"text/plain"})
-	public void login(@RequestBody UserAccount attempt,  HttpSession sess, HttpServletResponse resp) {
+	@RequestMapping(value="/login", method = RequestMethod.POST, consumes= {"application/json"})
+	public UserAccount login(@RequestBody UserAccount attempt,  HttpSession sess, HttpServletResponse resp) {
 		UserAccount authUser = service.validateUser(attempt);
 		
 		if(authUser != null) {
 			sess.setAttribute("user", authUser);
 			log.info("Going Home");
-			try {
-				resp.sendRedirect("home");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				log.warn(e.getMessage() + " From UserController.login() Failed Redirect to Home");
-			}
+				//resp.sendRedirect("home");
+				//resp.setStatus(HttpServletResponse.);
+				return authUser;
+
 			//return "home";
 			//return "{\"name\": \"red\"}";
 		} else {
@@ -51,6 +48,7 @@ public class UserController {
 		}
 		
 		//return "forward:/index.html";
+		return authUser;
 	}
 	
 	@CrossOrigin
