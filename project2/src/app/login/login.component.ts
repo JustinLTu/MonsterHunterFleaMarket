@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../service/login.service';
 import { User } from '../model/user.model';
 import { Routes } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -21,6 +22,9 @@ export class LoginComponent implements OnInit {
   constructor(private login: LoginService, private router: Router) { }
 
   ngOnInit() {
+    if (localStorage.getItem('user')) {
+      this.router.navigateByUrl('home');
+    }
   }
 
   handleError(err: HttpErrorResponse) {
@@ -31,8 +35,8 @@ export class LoginComponent implements OnInit {
   }
 
   navigate(user) {
+    localStorage.setItem('user', JSON.stringify(user));
     this.router.navigateByUrl('home');
-    console.log(user);
  }
 
   loginUser(event) {
@@ -49,5 +53,5 @@ export class LoginComponent implements OnInit {
     this.user.email = null;
 
     this.login.getInfo(this.user).pipe(catchError(this.handleError)).subscribe(data => this.navigate(data));
-    }
+  }
   }

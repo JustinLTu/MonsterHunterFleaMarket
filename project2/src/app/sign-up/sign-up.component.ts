@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { User } from '../model/user.model';
 import { RegisterService } from '../service/register.service';
 
@@ -9,10 +11,20 @@ import { RegisterService } from '../service/register.service';
 })
 export class SignUpComponent implements OnInit {
 
-  user: User;
-  constructor(private rService: RegisterService) { }
+  public user: User;
+  constructor(private rService: RegisterService, private router: Router) { }
 
   ngOnInit() {
+    if (localStorage.getItem('user')) {
+      this.router.navigateByUrl('home');
+    }
+  }
+
+  navigate(user) {
+
+    localStorage.setItem('user', JSON.stringify(user));
+    this.router.navigateByUrl('home');
+    
   }
 
   registerUser(event) {
@@ -31,9 +43,6 @@ export class SignUpComponent implements OnInit {
     this.user.rank = rank;
     this.user.email = email;
 
-    this.rService.signup(this.user).subscribe(data => {
-        console.log(data);
-    });
+    this.rService.signup(this.user).subscribe(data =>  this.navigate(data));
     }
-
 }

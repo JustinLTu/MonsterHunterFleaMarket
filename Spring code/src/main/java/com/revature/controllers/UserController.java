@@ -26,7 +26,7 @@ public class UserController {
 	Logger log = Logger.getLogger(UserController.class);
 	
 	@CrossOrigin
-	@RequestMapping(value="/login", method = RequestMethod.POST, consumes= {"application/json"})
+	@RequestMapping(value="/login", method = RequestMethod.POST, consumes= {"application/json"}, produces= {"application/json"})
 	public UserAccount login(@RequestBody UserAccount attempt,  HttpSession sess, HttpServletResponse resp) {
 		UserAccount authUser = service.validateUser(attempt);
 		
@@ -52,9 +52,10 @@ public class UserController {
 	}
 	
 	@CrossOrigin
-	@RequestMapping(value="/accounts",  method = RequestMethod.POST, consumes= {"application/json"})
-	public void register(@RequestBody UserAccount user) {
+	@RequestMapping(value="/accounts",  method = RequestMethod.POST, consumes= {"application/json"}, produces={"application/json"})
+	public UserAccount register(@RequestBody UserAccount user) {
 		service.create(user);
+		return  service.read(user.getUserid());
 	}
 	
 	

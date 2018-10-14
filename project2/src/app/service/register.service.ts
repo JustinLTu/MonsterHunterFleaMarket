@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/user.model';
+import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,8 +17,8 @@ export class RegisterService {
   private url = 'http://localhost:8080/HunterFleaMarket/accounts';
   constructor(private http: HttpClient) {
   }
-  signup(user: User) {
-    return this.http.post(this.url,
+  signup(user: User): Observable<User> {
+    return this.http.post<User>(this.url,
       user,  httpOptions
     );
 }
