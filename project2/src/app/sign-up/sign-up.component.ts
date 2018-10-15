@@ -22,9 +22,9 @@ export class SignUpComponent implements OnInit {
 
   navigate(user) {
 
-    localStorage.setItem('user', JSON.stringify(user));
+    const currentUser = JSON.stringify(user);
+    localStorage.setItem('user', currentUser);
     this.router.navigateByUrl('home');
-    
   }
 
   registerUser(event) {

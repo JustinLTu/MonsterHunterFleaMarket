@@ -20,7 +20,7 @@
        			revatureFullStax87
        			<!--  ${ 1808-ec2-uname } -->
        		</property>
-       		
+       		<property name="hibernate.id.new_generator_mappings">false</property>
        		<property name="hibernate.show_sql">true</property>
      
        		<mapping class="com.revature.entities.UserAccount"/>

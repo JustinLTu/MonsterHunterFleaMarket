@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError} from 'rxjs';
 import { Router } from '@angular/router';
@@ -7,8 +7,7 @@ import { Router } from '@angular/router';
 
 import { LoginService } from '../service/login.service';
 import { User } from '../model/user.model';
-import { Routes } from '@angular/router';
-import { map } from 'rxjs/operators';
+
 
 
 @Component({

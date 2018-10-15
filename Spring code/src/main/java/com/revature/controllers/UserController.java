@@ -33,12 +33,7 @@ public class UserController {
 		if(authUser != null) {
 			sess.setAttribute("user", authUser);
 			log.info("Going Home");
-				//resp.sendRedirect("home");
-				//resp.setStatus(HttpServletResponse.);
 				return authUser;
-
-			//return "home";
-			//return "{\"name\": \"red\"}";
 		} else {
 			try {
 				resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
@@ -47,7 +42,6 @@ public class UserController {
 			}
 		}
 		
-		//return "forward:/index.html";
 		return authUser;
 	}
 	

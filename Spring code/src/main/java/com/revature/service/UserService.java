@@ -7,12 +7,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService implements GenericService<UserAccount>{
 	
+	UserDao dao;
+	
 	public UserService() {
 		super();
+		this.dao = new UserDao();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public UserService(UserDao dao) {
+		super();
+		this.dao = dao;
+	}
 
-	UserDao dao = new UserDao();
+	
 
 	@Override
 	public UserAccount read(int id) {
@@ -25,7 +33,8 @@ public class UserService implements GenericService<UserAccount>{
 
 	@Override
 	public void create(UserAccount t) {
-		dao.create(t);
+		int id = dao.create(t);
+		t.setUserid(id);
 	}
 
 	@Override
@@ -44,5 +53,9 @@ public class UserService implements GenericService<UserAccount>{
 	
 	public UserAccount validateUser(UserAccount credentials) {
 		return dao.read(credentials.getUsername(), credentials.getPassword());
+	}
+	
+	public void setDao(UserDao dao) {
+		this.dao = dao;
 	}
 }

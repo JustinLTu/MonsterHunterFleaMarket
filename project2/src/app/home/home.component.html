@@ -1,6 +1,5 @@
 <h3>Welcome {{username}} !!!</h3>
 <div id="user-info">
-  
   <div class="row">
     <ul>
       <li>Hunter: {{hunter_name}}</li>
@@ -8,6 +7,28 @@
       <li>Register Email: {{email}}</li>
     </ul>    
 </div>
+<div>
+    <h4>Current Trade Offers</h4>
+    <table class="table table-striped" id="rforms">
+        <thead>
+          <tr>
+            <th scope="col">Trade #</th>	
+            <th scope="col">Item</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Msg</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+      </table>       
+</div>
+</div>
+
+
+
+<div class="row">
+  <div id="logout-btn">
+    <button id="logout-btn" class="btn-large btn-submit" type="submit" (click)="postTrade()">Post Offer</button>
+  </div>
 </div>
 
 <div class="row">

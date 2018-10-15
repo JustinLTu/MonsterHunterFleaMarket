@@ -9,7 +9,6 @@ import { User } from '../model/user.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   constructor(private router: Router) { }
 
   user = localStorage.getItem('user');
@@ -20,7 +19,13 @@ export class HomeComponent implements OnInit {
   rank = this.cUser.rank;
 
   ngOnInit() {
-  console.log(this.user);
+  if (localStorage.getItem('form')) {
+
+  }
+  }
+
+  postTrade() {
+    this.router.navigateByUrl('posttrade');
   }
 
   logoutUser() {
