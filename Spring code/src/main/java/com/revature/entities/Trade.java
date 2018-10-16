@@ -15,7 +15,7 @@ public class Trade {
 	@Id
 	@Column(name="TRADEID")
 	@SequenceGenerator(name="TRADEID_SEQ", sequenceName="TRADEID_SEQ")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TRADEID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TRADEID_SEQ")
 	private int tradeId;
 	
 	@Column(name="IS_OFFER")

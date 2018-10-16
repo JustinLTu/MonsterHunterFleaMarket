@@ -1,34 +1,34 @@
 package com.revature.service;
 
+import com.revature.dao.TradeDao;
 import com.revature.entities.Trade;
 
 public class TradeService implements GenericService<Trade> {
 
+	private TradeDao dao;
+	
 	public TradeService() {
-		// TODO Auto-generated constructor stub
+		super();
+		dao = new TradeDao();
 	}
 
 	@Override
 	public Trade read(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.read(id);
 	}
 
 	@Override
 	public void create(Trade object) {
-		// TODO Auto-generated method stub
-		
+		dao.create(object);
 	}
 
 	@Override
 	public Trade update(int id, Trade object) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.update(id, object);
 	}
 
 	@Override
 	public void delete(Trade object) {
-		// TODO Auto-generated method stub
-		
+		dao.delete(object);
 	}
 }
