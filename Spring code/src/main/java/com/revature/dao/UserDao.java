@@ -84,9 +84,15 @@ public class UserDao implements Dao<UserAccount> {
 
 	@Override
 	public void delete(UserAccount t) {
-		Transaction trans = sess.beginTransaction();
-		sess.delete(t);
-		trans.commit();
+		try { 
+			Transaction trans = sess.beginTransaction();
+			sess.delete(t);
+			trans.commit();
+		} catch (OptimisticLockException e) {
+			log.warn("Inside UserDao.delete( UserAccount) " + e.getMessage());
+			sess.getTransaction().rollback();
+		}
+		
 	}
 
 	public void truncateAll() {
