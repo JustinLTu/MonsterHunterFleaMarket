@@ -51,11 +51,11 @@ public class Trade {
 		this.tradeId = tradeId;
 	}
 
-	public boolean isOffer() {
+	public boolean getIsOffer() {
 		return isOffer;
 	}
 
-	public void setOffer(boolean isOffer) {
+	public void setIsOffer(boolean isOffer) {
 		this.isOffer = isOffer;
 	}
 

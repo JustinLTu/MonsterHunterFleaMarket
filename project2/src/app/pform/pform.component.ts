@@ -52,7 +52,7 @@ export class PformComponent implements OnInit {
 
     console.log(this.tradeForm);
     this.navigate(this.tradeForm);
-    // this.trade.sendTrade(this.tradeForm).pipe(catchError(this.handleError)).subscribe(data => this.navigate(data));
+    this.trade.sendTrade(this.tradeForm).pipe(catchError(this.handleError)).subscribe(data => this.navigate(data));
   }
 
 }

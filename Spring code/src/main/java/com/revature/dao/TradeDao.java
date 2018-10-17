@@ -20,6 +20,10 @@ public class TradeDao implements Dao<Trade> {
 		return sess.get(Trade.class, id);
 	}
 	
+	public List<Trade> readAll(){
+		//sess.createCriteria
+	}
+	
 
 	@Override
 	public int create(Trade t) {
@@ -42,7 +46,7 @@ public class TradeDao implements Dao<Trade> {
 			current.setItemName(t.getItemName());
 			current.setItemQuantity(t.getItemQuantity());
 			current.setMessage(t.getMessage());
-			current.setOffer(t.isOffer());
+			current.setIsOffer(t.getIsOffer());
 			sess.update(current);
 			trans.commit();
 			return current;
@@ -63,6 +67,7 @@ public class TradeDao implements Dao<Trade> {
 			sess.getTransaction().rollback();
 		}
 	}
+	
 	
 	public void test() {
 		

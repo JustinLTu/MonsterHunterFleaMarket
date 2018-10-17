@@ -1,8 +1,11 @@
 package com.revature.service;
 
+import org.springframework.stereotype.Service;
+
 import com.revature.dao.TradeDao;
 import com.revature.entities.Trade;
 
+@Service
 public class TradeService implements GenericService<Trade> {
 
 	private TradeDao dao;
