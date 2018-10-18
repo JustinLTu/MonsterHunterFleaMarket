@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { PformComponent } from './pform/pform.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PformComponent } from './pform/pform.component';
     LoginComponent,
     NavbarComponent,
     HomeComponent,
-    PformComponent
+    PformComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

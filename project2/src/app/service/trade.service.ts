@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { TradeForm } from '../model/tradeform.model';
 import { Observable } from 'rxjs';
 import { HttpParamsOptions } from '@angular/common/http/src/params';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+
 
 const httpOptions = {
   headers: new HttpHeaders({

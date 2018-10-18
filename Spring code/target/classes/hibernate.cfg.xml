@@ -14,7 +14,6 @@
        		</property>
        		<property name="hibernate.connection.username">
        			tsanjeev
-       			
        		</property>
        		<property name="hibernate.connection.password">
        			revatureFullStax87
@@ -25,7 +24,7 @@
      
        		<mapping class="com.revature.entities.UserAccount"/>
        		<mapping class="com.revature.entities.Trade"/>
-       		
+       		<mapping class="com.revature.entities.UserTrades"/>
        		
        		
        	</session-factory>

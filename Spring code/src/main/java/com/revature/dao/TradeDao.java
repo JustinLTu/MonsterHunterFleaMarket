@@ -1,12 +1,16 @@
 package com.revature.dao;
 
+import java.util.List;
+
 import javax.persistence.RollbackException;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.jboss.logging.Logger;
 
 import com.revature.entities.Trade;
+import com.revature.entities.UserAccount;
 import com.revature.util.SessionUtil;
 
 public class TradeDao implements Dao<Trade> {
@@ -18,10 +22,6 @@ public class TradeDao implements Dao<Trade> {
 	@Override
 	public Trade read(int id) {
 		return sess.get(Trade.class, id);
-	}
-	
-	public List<Trade> readAll(){
-		//sess.createCriteria
 	}
 	
 

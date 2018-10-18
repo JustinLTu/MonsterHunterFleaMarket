@@ -5,13 +5,15 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { PformComponent } from './pform/pform.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {path: 'welcome', component: LoginComponent },
   {path: 'signup', component: SignUpComponent},
   {path: '', redirectTo: 'welcome', pathMatch: 'full' },
   {path: 'home', component: HomeComponent },
-  {path: 'posttrade', component: PformComponent }
+  {path: 'posttrade', component: PformComponent },
+  {path: 'search', component: SearchComponent }
 ];
 
 @NgModule({
