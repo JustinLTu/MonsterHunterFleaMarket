@@ -6,6 +6,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { PformComponent } from './pform/pform.component';
 import { SearchComponent } from './search/search.component';
+import { BidformComponent } from './bidform/bidform.component';
 
 const routes: Routes = [
   {path: 'welcome', component: LoginComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full' },
   {path: 'home', component: HomeComponent },
   {path: 'posttrade', component: PformComponent },
-  {path: 'search', component: SearchComponent }
+  {path: 'search', component: SearchComponent },
+  {path: 'bids', component: BidformComponent }
 ];
 
 @NgModule({

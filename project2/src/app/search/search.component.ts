@@ -18,6 +18,10 @@ export class SearchComponent implements OnInit {
     this.search.getAllTrades().subscribe(data => this.setData(data));
   }
 
+  goToBid() {
+    this.router.navigateByUrl('bids');
+  }
+
   setData(trades) {
     this.trades = trades;
   }

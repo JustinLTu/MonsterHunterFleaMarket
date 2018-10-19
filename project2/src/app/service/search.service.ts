@@ -8,7 +8,7 @@ import { TradeForm } from '../model/tradeform.model';
 })
 export class SearchService {
 
-  private url = 'http://localhost:8080/HunterFleaMarket/search';
+  private url = 'http://localhost:8080/HunterFleaMarket/trades';
   user = localStorage.getItem('user');
   cUser = JSON.parse(this.user);
 

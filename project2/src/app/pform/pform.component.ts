@@ -51,7 +51,6 @@ export class PformComponent implements OnInit {
     this.tradeForm.message = message;
 
     console.log(this.tradeForm);
-    this.navigate(this.tradeForm);
     this.trade.sendTrade(this.tradeForm).pipe(catchError(this.handleError)).subscribe(data => this.navigate(data));
   }
 

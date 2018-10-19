@@ -1,0 +1,77 @@
+<div>
+    <ng-container *ngIf="tradeForm.isOffer">
+      <h5>Trade Offer</h5>
+    </ng-container>
+    <ng-container *ngIf="!tradeForm.isOffer">
+        <h5>Trade Request</h5>
+      </ng-container>
+    <table class="" id="">
+        <colgroup>
+          <col style="width: 30%">
+          <col style="width: 30%">
+          <col style="width: 40%">
+        </colgroup>
+        <thead>
+          <tr>
+            <!--<th scope="col">Trade #</th>	-->
+            <th scope="col">Item</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Message</th>
+          </tr>
+        </thead>
+        <tr>
+          <!--<td>{{value.tradeId}}</td>-->
+          <td>{{tradeForm.itemName}}</td>
+          <td>{{tradeForm.itemQuantity}}</td>
+          <td>{{tradeForm.message}}</td>
+          <td><!--status--></td>
+        </tr>
+      </table>   
+     
+</div>
+
+<div>
+    <form (submit)="postBid($event)" class="col s12">
+        <div class="row">
+            <app-item-name-selector></app-item-name-selector>
+            <div class="input-field col s6">
+                <input type="text" id="itemQuantity" class="" style="border: 1px solid black" placeholder="  Quanty of item" required>
+            </div>
+        </div>
+        <div class="row">
+          <div class="center-align">
+            <button class="btn-large btn-submit" type="submit">Submit</button>
+          </div>
+        </div>
+    </form>
+</div>
+
+<div>
+
+
+</div>
+<div>
+    <h5>Current Bids</h5>
+    <table class="" id="">
+        <colgroup>
+          <col style="width: 50%">
+          <col style="width: 50%">
+        </colgroup>
+        <thead>
+          <tr>
+            <!--<th scope="col">Trade #</th>	-->
+            <th scope="col">Item</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>{{dummyBid.itemName}}</td>
+          <td>{{dummyBid.itemQuantity}}</td>
+        </tr>
+      </table>    
+</div>
+
+<!-- <tr *ngFor="let b of bids">
+          <td>{{b.itemName}}</td>
+          <td>{{b.itemQuantity}}</td>
+        </tr>-->

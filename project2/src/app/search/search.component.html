@@ -1,10 +1,22 @@
+<br>
+<br>
+<div>
+  <div class="row center-align">
+    <div class="">
+      <h5>Search By Item Name</h5>
+      <input class="sBar" [(ngModel)]= "searchString" placeholder="">
+    </div>
+  </div>
+</div>
+
 <div>
     <h5>Available Offers</h5>
     <table class="" id="">
         <colgroup>
           <col style="width: 25%">
           <col style="width: 25%">
-          <col style="width: 40%">
+          <col style="width: 30%">
+          <col style="width: 10%">
           <col style="width: 10%">
         </colgroup>
         <thead>
@@ -12,17 +24,19 @@
             <!--<th scope="col">Trade #</th>	-->
             <th scope="col">Item</th>
             <th scope="col">Qty</th>
-            <th scope="col">Msg</th>
-            <th scope="col">Status</th>
+            <th scope="col">Message</th>
+            <th scope="col"><!-- Number of Bids--></th>
+            <th scope="col"></th>
           </tr>
         </thead>
-        <tr *ngFor="let value of trades">
+        <tr *ngFor="let value of trades | filteritem: searchString">
           <ng-container *ngIf="value.isOffer===true">
           <!--<td>{{value.tradeId}}</td>-->
           <td>{{value.itemName}}</td>
           <td>{{value.itemQuantity}}</td>
           <td>{{value.message}}</td>
-          <td>status</td>
+          <td><!--status--></td>
+          <td><Button class="bid-btn btn" type="submit" (click)="goToBid()">Bid</Button></td>
           </ng-container>
         </tr>
       </table>   
@@ -36,7 +50,8 @@
         <colgroup>
           <col style="width: 25%">
           <col style="width: 25%">
-          <col style="width: 40%">
+          <col style="width: 30%">
+          <col style="width: 10%">
           <col style="width: 10%">
         </colgroup>
         <thead>
@@ -44,17 +59,19 @@
             <!--<th scope="col">Trade #</th>	-->
             <th scope="col">Item</th>
             <th scope="col">Qty</th>
-            <th scope="col">Msg</th>
-            <th scope="col">Status</th>
+            <th scope="col">Message</th>
+            <th scope="col"><!-- Number of Bids--></th>
+            <th scope="col"></th>
           </tr>
         </thead>
-        <tr *ngFor="let value of trades">
+        <tr *ngFor="let value of trades  | filteritem: searchString">
           <ng-container *ngIf="value.isOffer===false">
           <!--<td>{{value.tradeId}}</td>-->
           <td>{{value.itemName}}</td>
           <td>{{value.itemQuantity}}</td>
           <td>{{value.message}}</td>
-          <td>status</td>
+          <td><!--status--></td>
+          <td><Button class="bid-btn btn" type="submit" (click)="goToBid()">Bid</Button></td>
           </ng-container>
         </tr>
       </table>    

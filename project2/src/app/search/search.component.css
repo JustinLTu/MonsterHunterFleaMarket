@@ -1,0 +1,9 @@
+.sBar {
+    border: 1px solid black;
+    width: 50%;
+}
+
+.bid-btn {
+    background-color: lightseagreen;
+    color: white;
+}

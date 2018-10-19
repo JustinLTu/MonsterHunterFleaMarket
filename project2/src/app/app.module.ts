@@ -14,6 +14,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { PformComponent } from './pform/pform.component';
 import { SearchComponent } from './search/search.component';
+import { FilteritemPipe } from './service/filteritem.pipe';
+import { BidformComponent } from './bidform/bidform.component';
+import { ItemNameSelectorComponent } from './item-name-selector/item-name-selector.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { SearchComponent } from './search/search.component';
     NavbarComponent,
     HomeComponent,
     PformComponent,
-    SearchComponent
+    SearchComponent,
+    FilteritemPipe,
+    BidformComponent,
+    ItemNameSelectorComponent
   ],
   imports: [
     BrowserModule,

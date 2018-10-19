@@ -28,9 +28,6 @@ public class UserController {
 	@Autowired
 	UserService uService;
 	
-	@Autowired
-	TradeService tService;
-	
 	Logger log = Logger.getLogger(UserController.class);
 	
 	@CrossOrigin
@@ -58,54 +55,6 @@ public class UserController {
 	public UserAccount register(@RequestBody UserAccount user) {
 		uService.create(user);
 		return  uService.read(user.getUserid());
-	}
-	
-	@CrossOrigin
-	@RequestMapping(value="/trades",  method = RequestMethod.POST, consumes= {"application/json"}, produces={"application/json"})
-	public Trade postTrade(@RequestBody Trade trade, @RequestParam String userid) {
-		
-		UserAccount ua = uService.read(Integer.parseInt(userid));
-		UserTrades ut = new UserTrades(ua, trade);
-		tService.createUserTrades(ut);
-		System.out.println(ut.toString());
-		
-		return  tService.read(trade.getTradeId());
-		
-	}
-	
-	@CrossOrigin
-	@RequestMapping(value="/trades", method=RequestMethod.GET, produces= {"application/json"})
-	public Trade[] getAllUserTrades( @RequestParam String userid) {
-		System.out.println(userid);
-		//System.out.println(tService.readAllUserTrades(Integer.parseInt(userid)));
-		List<UserTrades> ut = tService.readAllUserTrades(Integer.parseInt(userid));
-		List<Trade> tradeList = new ArrayList<Trade>();
-		for(int j = 0; j < ut.size(); j++ ) {
-			tradeList.add(ut.get(j).getTrade());
-		}
-		
-		Trade[] tLists = new Trade[tradeList.size()];
-		tLists = tradeList.toArray(tLists);
-		
-		System.out.println(tradeList);
-		return tLists;
-	}
-	
-	@CrossOrigin
-	@RequestMapping(value="/search", method=RequestMethod.GET, produces= {"application/json"})
-	public Trade[] getAllTrades() {
-		
-		List<UserTrades> ut = tService.readAllTrades();
-		List<Trade> tradeList = new ArrayList<Trade>();
-		for(int j = 0; j < ut.size(); j++ ) {
-			tradeList.add(ut.get(j).getTrade());
-		}
-		
-		Trade[] tLists = new Trade[tradeList.size()];
-		tLists = tradeList.toArray(tLists);
-		
-		System.out.println(tradeList);
-		return tLists;
 	}
 	
 }

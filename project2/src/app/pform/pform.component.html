@@ -8,7 +8,7 @@
         <div class="row">
             
               <div class="input-field col s6">
-                  <select id="isOffer" class="browser-default post-border" required>
+                  <select id="isOffer" class="browser-default full-border" required>
                     <option selected>Choose Transaction Type</option>
                     <option value="Offer">Offer</option>
                     <option value="Request">Request</option>
@@ -16,20 +16,14 @@
               </div>
             </div>
             <div class="row">
+                <app-item-name-selector></app-item-name-selector>
                 <div class="input-field col s6">
-                    <select id="itemName" class="browser-default post-border" required>
-                      <option  selected>Choose Item</option>
-                      <option value="Apple">Apple</option>
-                      <option value="Banana ">Banana</option>
-                    </select>
-                </div>
-                <div class="input-field col s6">
-                    <input type="text" id="itemQuantity" class="" style="border: 1px solid black" placeholder="  Quanty of item" required>
+                    <input type="text" id="itemQuantity" style="border: 1px solid black;" placeholder="Quanty of item" required>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col s12">
-                      <textarea name="message" id="message" class="post-border" rows="1" placeholder=" add message" required autofocus></textarea>
+                      <textarea name="message" id="message" class="full-border" rows="1" placeholder=" add message" required autofocus></textarea>
               </div>
             </div>
             <div class="row">

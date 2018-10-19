@@ -19,6 +19,11 @@ public class UserTrades {
 	@SequenceGenerator(name="USERTRADEID_SEQ", sequenceName="USERTRADEID_SEQ")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USERTRADEID_SEQ")
 	private int userTradeId;
+	
+	/*
+	 * @EmbeddedId
+	private UserTradeId userTradeId;
+	 */
 
 	@JoinColumn(name = "USERID")
 	@ManyToOne(optional = false, targetEntity = UserAccount.class)
