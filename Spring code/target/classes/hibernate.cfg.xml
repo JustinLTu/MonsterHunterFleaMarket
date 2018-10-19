@@ -25,6 +25,8 @@
        		<mapping class="com.revature.entities.UserAccount"/>
        		<mapping class="com.revature.entities.Trade"/>
        		<mapping class="com.revature.entities.UserTrades"/>
+       		<mapping class="com.revature.entities.TradeBids"/>
+       		<mapping class="com.revature.entities.Bid"/>
        		
        		
        	</session-factory>

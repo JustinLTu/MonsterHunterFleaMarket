@@ -1,6 +1,5 @@
 package com.revature.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.OptimisticLockException;
@@ -15,7 +14,7 @@ import com.revature.util.SessionUtil;
 
 public class UserDao implements Dao<UserAccount> {
 	
-	Session sess = SessionUtil.getSession();
+	private Session sess = SessionUtil.getSession();
 	
 	private Logger log = Logger.getLogger(UserDao.class);
 	
@@ -45,7 +44,7 @@ public class UserDao implements Dao<UserAccount> {
 	@Override
 	public int create(UserAccount t) {
 		Transaction trans = sess.beginTransaction();
-		Serializable s = sess.save(t);
+		sess.save(t);
 		trans.commit();
 		return t.getUserid();
 	}
@@ -93,10 +92,5 @@ public class UserDao implements Dao<UserAccount> {
 			sess.getTransaction().rollback();
 		}
 		
-	}
-
-	public void truncateAll() {
-		String hql = "truncate USER_ACCOUNTS";
-				
 	}
 }

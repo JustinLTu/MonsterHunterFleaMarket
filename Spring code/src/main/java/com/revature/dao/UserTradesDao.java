@@ -16,13 +16,12 @@ import com.revature.util.SessionUtil;
 
 public class UserTradesDao implements UserTradesDaoInterface {
 
-	Session sess = SessionUtil.getSession();
+	private Session sess = SessionUtil.getSession();
 	
 	private Logger log = Logger.getLogger(UserTradesDao.class);
 	
 	@Override
 	public boolean create(UserTrades ut) {
-		// TODO Auto-generated method stub
 		Transaction trans = sess.beginTransaction();
 		Serializable s = sess.save(ut);
 		trans.commit();
@@ -34,7 +33,6 @@ public class UserTradesDao implements UserTradesDaoInterface {
 	
 	@Override
 	public List<UserTrades> read(int userid) {
-		// TODO Auto-generated method stub
 		String hql = "from UserTrades  where USERID = :uid";
 		
 		Query<UserTrades> query = sess.createQuery(hql, UserTrades.class);
@@ -47,7 +45,6 @@ public class UserTradesDao implements UserTradesDaoInterface {
 
 	@Override
 	public void delete(UserTrades ut) {
-		// TODO Auto-generated method stub
 		try {
 			Transaction trans = sess.beginTransaction();
 			sess.delete(ut);
@@ -62,7 +59,6 @@ public class UserTradesDao implements UserTradesDaoInterface {
 
 	@Override
 	public List<UserTrades> readAll() {
-		// TODO Auto-generated method stub
 		String hql = "from UserTrades";
 		
 		Query<UserTrades> query = sess.createQuery(hql, UserTrades.class);

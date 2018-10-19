@@ -18,8 +18,16 @@ export class SearchComponent implements OnInit {
     this.search.getAllTrades().subscribe(data => this.setData(data));
   }
 
-  goToBid() {
+  goToBid(tradeId) {
+    localStorage.setItem('tradeId', tradeId);
     this.router.navigateByUrl('bids');
+  }
+
+  isLogged() {
+    if (localStorage.getItem('user') != null) {
+      return true;
+    }
+      return false;
   }
 
   setData(trades) {

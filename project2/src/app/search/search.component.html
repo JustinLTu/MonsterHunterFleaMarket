@@ -26,7 +26,9 @@
             <th scope="col">Qty</th>
             <th scope="col">Message</th>
             <th scope="col"><!-- Number of Bids--></th>
+            <ng-container *ngIf="isLogged()">
             <th scope="col"></th>
+            </ng-container>
           </tr>
         </thead>
         <tr *ngFor="let value of trades | filteritem: searchString">
@@ -36,8 +38,10 @@
           <td>{{value.itemQuantity}}</td>
           <td>{{value.message}}</td>
           <td><!--status--></td>
-          <td><Button class="bid-btn btn" type="submit" (click)="goToBid()">Bid</Button></td>
-          </ng-container>
+          <ng-container *ngIf="isLogged()">
+          <td><Button class="bid-btn btn" type="submit" (click)="goToBid(value.tradeId)">Bid</Button></td>
+        </ng-container>  
+        </ng-container>
         </tr>
       </table>   
      
@@ -61,7 +65,9 @@
             <th scope="col">Qty</th>
             <th scope="col">Message</th>
             <th scope="col"><!-- Number of Bids--></th>
+            <ng-container *ngIf="isLogged()">
             <th scope="col"></th>
+          </ng-container>
           </tr>
         </thead>
         <tr *ngFor="let value of trades  | filteritem: searchString">
@@ -71,8 +77,10 @@
           <td>{{value.itemQuantity}}</td>
           <td>{{value.message}}</td>
           <td><!--status--></td>
+          <ng-container *ngIf="isLogged()">
           <td><Button class="bid-btn btn" type="submit" (click)="goToBid()">Bid</Button></td>
-          </ng-container>
+        </ng-container>
+        </ng-container>
         </tr>
       </table>    
            

@@ -1,18 +1,29 @@
 package com.revature.entities;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import com.revature.embeddable.BidId;
 
 @Entity
 @Table(name="BIDS")
 public class Bid {
 
-	@EmbeddedId
-	private BidId bidId;
+	@Id
+	@Column(name="BIDID")
+	@SequenceGenerator(name="BIDID_SEQ", sequenceName="BIDID_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="BIDID_SEQ")
+	private int bidId;
+	
+	
+	@JoinColumn(name="USERID")
+	@ManyToOne
+	private UserAccount userId;
 	
 	@Column(name="ITEM_NAME")
 	private String itemName;
@@ -23,20 +34,30 @@ public class Bid {
 	public Bid() {
 		super();
 	}
-
-	public Bid(String itemName, int itemQuantity) {
+	
+	public Bid(int bidId, UserAccount userId, String itemName, int itemQuantity) {
 		super();
+		this.bidId = bidId;
+		this.userId = userId;
 		this.itemName = itemName;
 		this.itemQuantity = itemQuantity;
 	}
 
-	
-	public BidId getBidId() {
+
+	public int getBidId() {
 		return bidId;
 	}
 
-	public void setBidId(BidId bidId) {
+	public void setBidId(int bidId) {
 		this.bidId = bidId;
+	}
+
+	public UserAccount getUserId() {
+		return userId;
+	}
+
+	public void setUserId(UserAccount userId) {
+		this.userId = userId;
 	}
 
 	public String getItemName() {
@@ -57,6 +78,8 @@ public class Bid {
 
 	@Override
 	public String toString() {
-		return "Bid [bidId=" + bidId + ", itemName=" + itemName + ", itemQuantity=" + itemQuantity + "]";
+		return "Bid [bidId=" + bidId + ", userId=" + userId + ", itemName=" + itemName + ", itemQuantity="
+				+ itemQuantity + "]";
 	}
+
 }

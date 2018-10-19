@@ -25,11 +25,11 @@ public class UserTrades {
 	private UserTradeId userTradeId;
 	 */
 
-	@JoinColumn(name = "USERID")
+	@JoinColumn(name = "USERID") //, table="USER_ACCOUNTS"
 	@ManyToOne(optional = false, targetEntity = UserAccount.class)
 	private UserAccount userAccount;
 	
-	@JoinColumn(name = "TRADEID")
+	@JoinColumn(name = "TRADEID") //, table="TRADES"
 	@ManyToOne(optional = false, targetEntity = Trade.class)
 	private Trade trade;
 	
