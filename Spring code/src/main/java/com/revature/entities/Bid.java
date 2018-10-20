@@ -22,8 +22,7 @@ public class Bid {
 	
 	
 	@JoinColumn(name="USERID")
-	@ManyToOne
-	private UserAccount userId;
+	private int userId;
 	
 	@Column(name="ITEM_NAME")
 	private String itemName;
@@ -35,7 +34,7 @@ public class Bid {
 		super();
 	}
 	
-	public Bid(int bidId, UserAccount userId, String itemName, int itemQuantity) {
+	public Bid(int bidId, int userId, String itemName, int itemQuantity) {
 		super();
 		this.bidId = bidId;
 		this.userId = userId;
@@ -52,11 +51,11 @@ public class Bid {
 		this.bidId = bidId;
 	}
 
-	public UserAccount getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(UserAccount userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

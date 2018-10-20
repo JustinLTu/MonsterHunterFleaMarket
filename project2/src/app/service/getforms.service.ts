@@ -9,16 +9,17 @@ import { TradeForm } from '../model/tradeform.model';
 export class GetformsService {
 
   private url = 'http://localhost:8080/HunterFleaMarket/trades/userid';
-  user = localStorage.getItem('user');
-  cUser = JSON.parse(this.user);
+  
 
   constructor(private http: HttpClient) { }
 
   getUserTrades(): Observable<TradeForm[]> {
+    const user = localStorage.getItem('user');
+    const cUser = JSON.parse(user);
     return this.http.get<TradeForm[]>(this.url,
       {
         params: {
-          userid: this.cUser.userid,
+          userid: cUser.userid,
         }
       });
     }

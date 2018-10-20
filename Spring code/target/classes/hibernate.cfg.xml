@@ -27,7 +27,8 @@
        		<mapping class="com.revature.entities.UserTrades"/>
        		<mapping class="com.revature.entities.TradeBids"/>
        		<mapping class="com.revature.entities.Bid"/>
-       		
+       		<mapping class="com.revature.embeddable.TradeBidsId"/>
+       		<mapping class="com.revature.embeddable.UserTradeId"/>
        		
        	</session-factory>
        </hibernate-configuration>

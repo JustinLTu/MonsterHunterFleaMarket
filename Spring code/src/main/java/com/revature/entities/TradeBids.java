@@ -2,6 +2,7 @@ package com.revature.entities;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -11,30 +12,33 @@ import com.revature.embeddable.TradeBidsId;
 @Entity
 @Table(name="TRADE_BIDS")
 public class TradeBids {
+	
 	@EmbeddedId
-	private TradeBidsId tradeBidsId;
+	protected TradeBidsId tradeBidsId;
 	 
  
-	@JoinColumn(name = "BIDID") //, table="BIDS"
-	@ManyToOne(optional = false, targetEntity = UserAccount.class)
+	/*
+	@JoinColumn(name = "BIDID", nullable = false, insertable=false, updatable=false ) //, table="BIDS"
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Bid bid;
 	
-	@JoinColumn(name = "TRADEID")//, table="TRADES"
-	@ManyToOne(optional = false, targetEntity = Trade.class)
+	@JoinColumn(name = "TRADEID", nullable = false, insertable=false, updatable=false )//, table="TRADES"
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Trade trade;
-
-	
+*/
 	
 	public TradeBids() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TradeBids(TradeBidsId tradeBidsId, Bid bid, Trade trade) {
+	public TradeBids(TradeBidsId tradeBidsId) {
 		super();
 		this.tradeBidsId = tradeBidsId;
+		/*
 		this.bid = bid;
 		this.trade = trade;
+		*/
 	}
 
 	public TradeBidsId getTradeBidsId() {
@@ -45,6 +49,13 @@ public class TradeBids {
 		this.tradeBidsId = tradeBidsId;
 	}
 
+	@Override
+	public String toString() {
+		return "TradeBids [tradeBidsId=" + tradeBidsId + "]";
+	}
+
+	
+	/*
 	public Bid getBid() {
 		return bid;
 	}
@@ -60,10 +71,12 @@ public class TradeBids {
 	public void setTrade(Trade trade) {
 		this.trade = trade;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "TradeBids [tradeBidsId=" + tradeBidsId + ", bid=" + bid + ", trade=" + trade + "]";
 	}
+*/
+	
 
 }

@@ -2,6 +2,7 @@ package com.revature.embeddable;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
@@ -13,9 +14,11 @@ public class UserTradeId implements Serializable {
 	private static final long serialVersionUID = -5884275393083855432L;
 
 	@NotNull
+	@Column(name="USERID")
 	private int userId;
 	
 	@NotNull
+	@Column(name="TRADEID")
 	private int tradeId;
 
 	public UserTradeId() {

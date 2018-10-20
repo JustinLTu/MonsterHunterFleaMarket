@@ -58,4 +58,9 @@ create sequence USERTRADEID_SEQ start with 1;
 select * from TRADES;
 select * from USER_TRADES;
 select * from USER_ACCOUNTS;
+select * from BIDS;
+select * from TRADE_BIDS;
+
 DROP TABLE USER_TRADES;
+
+truncate user_trades, trade_bids, bids, trades;

@@ -1,10 +1,13 @@
 package com.revature.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.revature.dao.BidDao;
 import com.revature.dao.TradeBidsDao;
 import com.revature.entities.Bid;
+import com.revature.entities.Trade;
 import com.revature.entities.TradeBids;
 
 @Service
@@ -24,9 +27,26 @@ public class BidService implements GenericService<Bid> {
 	}
 
 	@Override
-	public Bid read(int id) {
+	public Bid read(int bidId) {
 		// TODO Auto-generated method stub
-		return bDao.read(id);
+		return bDao.read(bidId);
+	}
+	
+	public Bid[] readAllByTradeId(int tradeId) {
+		List<TradeBids> tradeBidsList = tbDao.readAllBids(tradeId);
+		if(tradeBidsList.isEmpty()) {
+			return new Bid[0];
+		}
+		int [] releventBidIds = new int[tradeBidsList.size()];
+		
+		for(int i = 0; i < tradeBidsList.size(); i++) {
+			releventBidIds[i] = tradeBidsList.get(i).getTradeBidsId().getBidId();
+		}
+		
+		List<Bid> allBids = bDao.readMultiple(releventBidIds);
+		Bid[] arr = new Bid[allBids.size()];
+		arr = allBids.toArray(arr);
+		return arr;
 	}
 
 	@Override
@@ -37,7 +57,6 @@ public class BidService implements GenericService<Bid> {
 	}
 	
 	public void createTradeBids(TradeBids tb) {
-		bDao.create(tb.getBid());
 		tbDao.create(tb);
 	}
 

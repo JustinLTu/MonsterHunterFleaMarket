@@ -74,4 +74,10 @@ public class TradeController {
 		System.out.println(tradeList);
 		return tLists;
 	}
+	
+	@CrossOrigin
+	@RequestMapping(value="/tradeid", method=RequestMethod.GET, produces= {"application/json"})
+	public Trade getTradeById(@RequestParam String tradeid) {
+		return tService.read(Integer.parseInt(tradeid));
+	}
 }

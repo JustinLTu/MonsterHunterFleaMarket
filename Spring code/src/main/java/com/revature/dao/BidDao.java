@@ -1,9 +1,12 @@
 package com.revature.dao;
 
+import java.util.List;
+
 import javax.persistence.RollbackException;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.jboss.logging.Logger;
 
 import com.revature.entities.Bid;
@@ -33,6 +36,25 @@ Session sess = SessionUtil.getSession();
 	public Bid read(int bidId) {
 		// TODO Auto-generated method stub
 		return sess.get(Bid.class, bidId);
+	}
+	
+	public List<Bid> readMultiple(int[] bidIds) {
+		StringBuilder ids = new StringBuilder();
+		
+		for(int i = 0; i < bidIds.length; i++) {
+			ids.append(bidIds[i]);
+			if(i < bidIds.length - 1) {
+				ids.append(", ");
+			}
+			
+		}
+		String hql = "from Bid where bidId in (" + ids.toString() + ")";
+		
+		System.out.println(hql);
+		
+		Query<Bid> query = sess.createQuery(hql, Bid.class);
+		List<Bid> result = query.getResultList();
+		return result;
 	}
 
 	@Override

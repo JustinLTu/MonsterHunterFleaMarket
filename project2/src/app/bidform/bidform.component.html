@@ -1,10 +1,12 @@
 <div>
-    <ng-container *ngIf="tradeForm.isOffer">
-      <h5>Trade Offer</h5>
-    </ng-container>
-    <ng-container *ngIf="!tradeForm.isOffer">
+  <ng-container *ngIf="tradeform != undefined">
+    <ng-container *ngIf="dummyTrade.isOffer">
+        <h5>Trade Offer</h5>
+      </ng-container>
+      <ng-container *ngIf="!dummyTrade.isOffer">
         <h5>Trade Request</h5>
       </ng-container>
+  </ng-container>
     <table class="" id="">
         <colgroup>
           <col style="width: 30%">
@@ -13,18 +15,18 @@
         </colgroup>
         <thead>
           <tr>
-            <!--<th scope="col">Trade #</th>	-->
             <th scope="col">Item</th>
             <th scope="col">Qty</th>
             <th scope="col">Message</th>
           </tr>
         </thead>
         <tr>
-          <!--<td>{{value.tradeId}}</td>-->
-          <td>{{tradeForm.itemName}}</td>
-          <td>{{tradeForm.itemQuantity}}</td>
-          <td>{{tradeForm.message}}</td>
-          <td><!--status--></td>
+          
+          <ng-container *ngIf="tradeform != undefined">
+            <td>{{tradeform.itemName}}</td>
+            <td>{{tradeform.itemQuantity}}</td>
+            <td>{{tradeform.message}}</td>
+          </ng-container>
         </tr>
       </table>   
      
@@ -40,7 +42,7 @@
         </div>
         <div class="row">
           <div class="center-align">
-            <button class="btn-large btn-submit" type="submit">Submit</button>
+            <button class="btn-large btn-submit" type="submit" (click)="refresh()">Submit</button>
           </div>
         </div>
     </form>
@@ -64,14 +66,14 @@
             <th scope="col">Quantity</th>
           </tr>
         </thead>
-        <tr>
-          <td>{{dummyBid.itemName}}</td>
-          <td>{{dummyBid.itemQuantity}}</td>
-        </tr>
+        <ng-container *ngIf="bidform != undefined">
+          <tr *ngFor="let b of bidform">
+            <td>{{b.itemName}}</td>
+            <td>{{b.itemQuantity}}</td>
+          </tr>
+        </ng-container>
+        
       </table>    
 </div>
 
-<!-- <tr *ngFor="let b of bids">
-          <td>{{b.itemName}}</td>
-          <td>{{b.itemQuantity}}</td>
-        </tr>-->
+<!-- -->

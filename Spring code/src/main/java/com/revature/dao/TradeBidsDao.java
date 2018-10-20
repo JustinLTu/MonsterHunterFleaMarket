@@ -32,10 +32,11 @@ public class TradeBidsDao implements TradeBidsInterface {
 
 	@Override
 	public List<TradeBids> readAllBids(int tradeId) {
-		String hql = "from TRADEBIDS where TRADEID = :id";
+		String hql = "from TradeBids bids where bids.tradeBidsId.tradeId = :id";
 		Query<TradeBids> query = sess.createQuery(hql, TradeBids.class);
 		
-		query.setParameter("id", tradeId);
+		
+		query.setParameter("id", Integer.valueOf(tradeId));
 
 		List<TradeBids> result = query.getResultList();
 		return result;

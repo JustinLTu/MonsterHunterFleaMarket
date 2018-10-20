@@ -59,11 +59,9 @@
         </thead>
         <tr *ngFor="let value of trades">
           <ng-container *ngIf="value.isOffer===false">
-          <!--<td>{{value.tradeId}}</td>-->
           <td>{{value.itemName}}</td>
           <td>{{value.itemQuantity}}</td>
           <td>{{value.message}}</td>
-          <!-- <td>status</td>-->
           </ng-container>
         </tr>
       </table>    

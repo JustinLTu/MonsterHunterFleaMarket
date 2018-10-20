@@ -23,10 +23,12 @@ export class TradeService {
   tradeid = localStorage.getItem('tradeId');
 
   private tradeUrl = 'http://localhost:8080/HunterFleaMarket/trades';
+  private getTradeUrl = 'http://localhost:8080/HunterFleaMarket/trades/tradeid';
   private bidUrl = 'http://localhost:8080/HunterFleaMarket/bids';
 
   constructor(private http: HttpClient) {
   }
+
 
   sendBid(bidform: BidForm): Observable<BidForm> {
     const userId: any = { userid: this.cUser.userid,
@@ -45,14 +47,24 @@ export class TradeService {
     return this.http.post<TradeForm>(this.tradeUrl,
       tradeForm, options
     );
-}
-
-getAllBids(): Observable<BidForm[]> {
-  return this.http.get<BidForm[]>(this.bidUrl,
-    {
-      params: {
-        userid: this.cUser.userid,
-      }
-    });
   }
+
+  getAllBids(): Observable<BidForm[]> {
+    return this.http.get<BidForm[]>(this.bidUrl,
+      {
+        params: {
+          tradeid: this.tradeid
+        }
+      });
+  }
+
+  getStoredTrade(): Observable<TradeForm> {
+    return this.http.get<TradeForm>(this.getTradeUrl,
+      {
+        params: {
+          tradeid: this.tradeid
+        }
+      });
+  }
+
 }

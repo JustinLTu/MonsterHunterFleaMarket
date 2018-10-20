@@ -22,7 +22,7 @@ public class UserTrades {
 	
 	/*
 	 * @EmbeddedId
-	private UserTradeId userTradeId;
+	protected UserTradeId userTradeId;
 	 */
 
 	@JoinColumn(name = "USERID") //, table="USER_ACCOUNTS"
