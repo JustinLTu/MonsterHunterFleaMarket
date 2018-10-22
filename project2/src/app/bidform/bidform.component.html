@@ -1,9 +1,9 @@
 <div>
   <ng-container *ngIf="tradeform != undefined">
-    <ng-container *ngIf="dummyTrade.isOffer">
+    <ng-container *ngIf="tradeform.isOffer">
         <h5>Trade Offer</h5>
       </ng-container>
-      <ng-container *ngIf="!dummyTrade.isOffer">
+      <ng-container *ngIf="!tradeform.isOffer">
         <h5>Trade Request</h5>
       </ng-container>
   </ng-container>

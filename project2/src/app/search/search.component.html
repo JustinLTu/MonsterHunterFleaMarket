@@ -78,7 +78,7 @@
           <td>{{value.message}}</td>
           <td><!--status--></td>
           <ng-container *ngIf="isLogged()">
-          <td><Button class="bid-btn btn" type="submit" (click)="goToBid()">Bid</Button></td>
+          <td><Button class="bid-btn btn" type="submit" (click)="goToBid(value.tradeId)">Bid</Button></td>
         </ng-container>
         </ng-container>
         </tr>
