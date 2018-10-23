@@ -33,15 +33,15 @@
         </thead>
         <tr *ngFor="let value of trades | filteritem: searchString">
           <ng-container *ngIf="value.isOffer===true">
-          <!--<td>{{value.tradeId}}</td>-->
-          <td>{{value.itemName}}</td>
-          <td>{{value.itemQuantity}}</td>
-          <td>{{value.message}}</td>
-          <td><!--status--></td>
-          <ng-container *ngIf="isLogged()">
-          <td><Button class="bid-btn btn" type="submit" (click)="goToBid(value.tradeId)">Bid</Button></td>
-        </ng-container>  
-        </ng-container>
+            <!--<td>{{value.tradeId}}</td>-->
+            <td>{{value.itemName}}</td>
+            <td>{{value.itemQuantity}}</td>
+            <td>{{value.message}}</td>
+            <td><!--status--></td>
+            <ng-container *ngIf="isLogged()">
+            <td><Button class="bid-btn btn" type="submit" (click)="goToBid(value.tradeId)">Bid</Button></td>
+            </ng-container>  
+          </ng-container>
         </tr>
       </table>   
      
@@ -72,15 +72,15 @@
         </thead>
         <tr *ngFor="let value of trades  | filteritem: searchString">
           <ng-container *ngIf="value.isOffer===false">
-          <!--<td>{{value.tradeId}}</td>-->
-          <td>{{value.itemName}}</td>
-          <td>{{value.itemQuantity}}</td>
-          <td>{{value.message}}</td>
-          <td><!--status--></td>
-          <ng-container *ngIf="isLogged()">
-          <td><Button class="bid-btn btn" type="submit" (click)="goToBid(value.tradeId)">Bid</Button></td>
-        </ng-container>
-        </ng-container>
+            <!--<td>{{value.tradeId}}</td>-->
+            <td>{{value.itemName}}</td>
+            <td>{{value.itemQuantity}}</td>
+            <td>{{value.message}}</td>
+            <td><!--status--></td>
+            <ng-container *ngIf="isLogged()">
+            <td><Button class="bid-btn btn" type="submit" (click)="goToBid(value.tradeId)">Bid</Button></td>
+            </ng-container>
+          </ng-container>
         </tr>
       </table>    
            
